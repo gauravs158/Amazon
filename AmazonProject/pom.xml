@@ -6,26 +6,56 @@
 	<artifactId>MMTProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
-		<java.version>17</java.version>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-		<aspectj.version>1.9.19</aspectj.version>
-		<maven-compiler.version>3.10.1</maven-compiler.version>
-		<maven-surefire.version>3.0.0-M7</maven-surefire.version>
-		<maven-resource-plugin.version>3.3.0</maven-resource-plugin.version>
-		<xml-apis.version>1.4.01</xml-apis.version>
-		<maven.build.timestamp.format>yyyy_MM_dd_HH_mm_ss</maven.build.timestamp.format>
-		<timestamp>${maven.build.timestamp}</timestamp>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<surefire.rerunFailingTestsCount>2</surefire.rerunFailingTestsCount>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>		
 	</properties>
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+   <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>7.10.2</version>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>7.21.1</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.18.0</version>
+		</dependency>
+
+
+		<!--
+		https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
+		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber7-adapter</artifactId>
+			<version>1.14.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.1.2</version>
+		</dependency>
+
+		<!--
+		https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>7.21.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>7.21.1</version>
+		</dependency>
+
 		<!--
 		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
@@ -33,205 +63,44 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.29.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>7.21.1</version>
-		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-		<dependency>
-			<groupId>io.github.bonigarcia</groupId>
-			<artifactId>webdrivermanager</artifactId>
-			<version>5.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>5.2.3</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
-		<dependency>
-		    <groupId>org.apache.pdfbox</groupId>
-		    <artifactId>pdfbox</artifactId>
-		    <version>3.0.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>5.2.3</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.aventstack/chaintest-testng -->
-		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>chaintest-testng</artifactId>
-			<version>1.0.11</version>
-		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/com.aventstack/chaintest-cucumber-jvm -->
-		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>chaintest-cucumber-jvm</artifactId>
-			<version>1.0.11</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.aventstack/chaintest-core -->
-		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>chaintest-core</artifactId>
-			<version>1.0.11</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.freemarker/freemarker 
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<version>2.3.34</version>
-		</dependency>-->
-
-		<!--
-		https://mvnrepository.com/artifact/tech.grasshopper/cucumber-pdf-report -->
-		<dependency>
-			<groupId>tech.grasshopper</groupId>
-			<artifactId>cucumber-pdf-report</artifactId>
-			<version>2.14.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
-		<dependency>
-			<groupId>net.masterthought</groupId>
-			<artifactId>cucumber-reporting</artifactId>
-			<version>5.7.4</version>
-		</dependency>
-		<dependency>
-			<groupId>com.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>5.7.1</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
-		<!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
-		<dependency>
-			<groupId>net.sourceforge.tess4j</groupId>
-			<artifactId>tess4j</artifactId>
-			<version>5.15.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.5.16</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>2.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.36</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>7.21.1</version>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-picocontainer</artifactId>
-			<version>7.21.1</version>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-plugin</artifactId>
-			<version>7.21.1</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<version>5.3.0</version>
-		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
-		<dependency>
-			<groupId>net.masterthought</groupId>
-			<artifactId>maven-cucumber-reporting</artifactId>
-			<version>5.8.5</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>gherkin</artifactId>
-			<version>32.0.0</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>${aspectj.version}</version>
+			<version>1.9.22.1</version>
 		</dependency>
 		<!--
-		https://mvnrepository.com/artifact/com.vimalselvam/cucumber-extentsreport -->
+					https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
-			<groupId>com.vimalselvam</groupId>
-			<artifactId>cucumber-extentsreport</artifactId>
-			<version>3.1.1</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java 
-		<dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-java</artifactId>
-		    <version>7.12.1</version>
-		</dependency>-->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
 			<version>2.11.0</version>
 		</dependency>
+		<!--
+					https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson -->
 		<dependency>
-			<groupId>tech.grasshopper</groupId>
-			<artifactId>extentreports-cucumber7-adapter</artifactId>
-			<version>1.10.1</version>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>converter-gson</artifactId>
+			<version>2.11.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/de.redsix/pdfcompare -->
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>
-			<groupId>de.redsix</groupId>
-			<artifactId>pdfcompare</artifactId>
-			<version>1.1.61</version>
-			<scope>test</scope>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20240303</version>
 		</dependency>
 		<!--
-		https://mvnrepository.com/artifact/com.testautomationguru.pdfutil/pdf-util -->
+					https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
 		<dependency>
-			<groupId>com.testautomationguru.pdfutil</groupId>
-			<artifactId>pdf-util</artifactId>
-			<version>0.0.3</version>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.9.0</version>
 		</dependency>
-		<!--<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports</artifactId>
-			<version>5.0.9</version>
-		</dependency> 
-		==========================-->
+		<!--
+					https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports</artifactId>
-			<version>4.1.5</version>
-		</dependency>
-		<!--<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>6.0.0-RC2</version>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>6.0.0-RC2</version>
-		</dependency>-->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>24.1-jre</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.18.2</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -276,82 +145,12 @@
 						</goals>
 					</execution>
 				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.aspectj</groupId>
-						<artifactId>aspectjweaver</artifactId>
-						<version>${aspectj.version}</version>
-					</dependency>
-					<!--
-					https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-					<dependency>
-						<groupId>com.google.code.gson</groupId>
-						<artifactId>gson</artifactId>
-						<version>2.11.0</version>
-					</dependency>
-					<!--
-					https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson -->
-					<dependency>
-						<groupId>com.squareup.retrofit2</groupId>
-						<artifactId>converter-gson</artifactId>
-						<version>2.11.0</version>
-					</dependency>
-					<!-- https://mvnrepository.com/artifact/org.json/json -->
-					<dependency>
-						<groupId>org.json</groupId>
-						<artifactId>json</artifactId>
-						<version>20240303</version>
-					</dependency>
-					<!--
-					https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
-					<dependency>
-						<groupId>com.jayway.jsonpath</groupId>
-						<artifactId>json-path</artifactId>
-						<version>2.9.0</version>
-					</dependency>
-					<!--
-					https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-					<dependency>
-						<groupId>com.fasterxml.jackson.core</groupId>
-						<artifactId>jackson-databind</artifactId>
-						<version>2.18.2</version>
-					</dependency>
-
-				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>11.0.12</version>
-			</plugin>
-			<!--
-			https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>${maven-resource-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>copy-custom-report</id>
-						<phase>site</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>
-								${basedir}/ExecutionReport-${timestamp}/</outputDirectory>
-							<resources>
-								<resource>
-									<directory>${basedir}/target/custom-reports</directory>
-									<directory>${basedir}/test-output/Default
-										suites</directory>
-									<filtering>false</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			</plugin>			
 		</plugins>
 	</build>
 </project>

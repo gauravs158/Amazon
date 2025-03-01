@@ -1,20 +1,23 @@
 package cucumberOptions;
 
+import org.testng.annotations.DataProvider;
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features="",
+@CucumberOptions(features="@target/failed_scenarios.txt",
 glue="stepDefinitionFiles", monochrome=true,
 dryRun=false,
 plugin = {
-        "json:build/cucumber-reports/cucumber.json",
-        "rerun:build/cucumber-reports/rerun.txt",
-        "pretty:target/cucumber.html",
+		"html:target/cucumber.html",
         "json:target/cucumber.json",
-        "com.aventstack.chaintest.plugins.ChainTestCucumberListeners:",
-        "rerun:target/failed_scenarios.txt"
+        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
   })
 
 public class failedScenarioRunner  extends AbstractTestNGCucumberTests{
-
+	@Override
+	@DataProvider(parallel=true)
+	public Object[][] scenarios(){
+		return super.scenarios();
+	}
 }
