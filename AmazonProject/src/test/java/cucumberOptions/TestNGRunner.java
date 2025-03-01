@@ -14,8 +14,8 @@ plugin = {
 //        "pretty:target/cucumber.html",
 		"html:target/cucumber.html",
         "json:target/cucumber.json",
-        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-//        "com.aventstack.chaintest.plugins.ChainTestCucumberListeners:",
+//        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+        "com.aventstack.chaintest.plugins.ChainTestCucumberListener:",
         "rerun:target/failed_scenarios.txt"
   }
 )
