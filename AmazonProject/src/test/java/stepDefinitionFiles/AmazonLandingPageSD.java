@@ -1,5 +1,8 @@
 package stepDefinitionFiles;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -15,7 +18,7 @@ public class AmazonLandingPageSD {
 	AmazonLandingPage amazonLandingPage;
 	List<WebElement> list;
 	SoftAssert sa = new SoftAssert();
-	
+	String links;
 	public AmazonLandingPageSD(TestContextSetup testContextSetup) {
 		this.testContextSetup = testContextSetup;
 		amazonLandingPage = testContextSetup.pageObjectManager.getAmazonLandingPage();
@@ -42,8 +45,24 @@ public class AmazonLandingPageSD {
 	}
 	
 	@And("^the user counts the number of broken links present in the (.+) section$")
-	public void the_user_counts_the_number_of_broken_links_present_in_the_section(String sectionName) {
-		
+	public void the_user_counts_the_number_of_broken_links_present_in_the_section(String sectionName) throws IOException {
+		list = amazonLandingPage.getListOfLinks(sectionName);
+		for(WebElement we : list) {
+			links=we.getDomAttribute("href");
+			URL link=new URL(links);
+			HttpURLConnection httpConn = (HttpURLConnection) link.openConnection();
+			httpConn.connect();
+			int code = httpConn.getResponseCode();
+			if(code >= 400)
+		      {
+		        System.out.println("Broken Link: " + links);
+		      }
+		      else
+		      {
+		        System.out.println("Valid Link: " + links);
+		      }
+			httpConn.disconnect();
+		}
 	}
 	
 	@And("^the user counts the number of links present in the (.+) section$")
