@@ -7,6 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features="src/test/java/featureFiles",
 glue="stepDefinitionFiles", monochrome=true,
+tags="@brokenlinks",
 dryRun=false,
 plugin = {
 //        "json:build/cucumber-reports/cucumber.json",
@@ -22,7 +23,7 @@ plugin = {
 public class TestNGRunner extends AbstractTestNGCucumberTests{
 
 	@Override
-	@DataProvider(parallel=true)
+	@DataProvider(parallel=false)
 	public Object[][] scenarios(){
 		return super.scenarios();
 	}
