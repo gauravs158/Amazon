@@ -19,6 +19,7 @@ public class AmazonLandingPageSD {
 	List<WebElement> list;
 	SoftAssert sa = new SoftAssert();
 	String links;
+	int brokenLinkCounter=0;
 	public AmazonLandingPageSD(TestContextSetup testContextSetup) {
 		this.testContextSetup = testContextSetup;
 		amazonLandingPage = testContextSetup.pageObjectManager.getAmazonLandingPage();
@@ -30,13 +31,13 @@ public class AmazonLandingPageSD {
 	}
 	
 	@When("^the user searches for (.+)$")
-	public void the_user_searches_for_bookName(String bookName) {
-		amazonLandingPage.searchTextBox(bookName);
+	public void the_user_searches_for_itemName(String itemName) {
+		amazonLandingPage.searchTextBox(itemName);
 	}
 	
-	@When("^the user adds (.+) to bookList$")
-	public void the_user_adds_book_to_bookList(String bookName) {
-		testContextSetup.bookList.add(bookName);		
+	@When("^the user adds (.+) to itemList$")
+	public void the_user_adds_book_to_itemList(String itemName) {
+		testContextSetup.itemList.add(itemName);		
 	}
 	
 	@And("the user scrolls down to the footer section")
@@ -47,14 +48,16 @@ public class AmazonLandingPageSD {
 	@And("^the user counts the number of broken links present in the (.+) section$")
 	public void the_user_counts_the_number_of_broken_links_present_in_the_section(String sectionName) throws IOException {
 		list = amazonLandingPage.getListOfLinks(sectionName);
+		int code;
 		for(WebElement we : list) {
 			links=we.getDomAttribute("href");
 			URL link=new URL(links);
 			HttpURLConnection httpConn = (HttpURLConnection) link.openConnection();
 			httpConn.connect();
-			int code = httpConn.getResponseCode();
+			code = httpConn.getResponseCode();
 			if(code >= 400)
 		      {
+				brokenLinkCounter++;
 		        System.out.println("Broken Link: " + links);
 		      }
 		      else
@@ -75,7 +78,9 @@ public class AmazonLandingPageSD {
 	
 	@And("^the count is (.+)$")
 	public void the_count_is(int count) {
-		sa.assertEquals(list.size(), count);
+		System.out.println("brokenLinkCounter "+brokenLinkCounter);
+		System.out.println("count "+count);
+		sa.assertEquals(brokenLinkCounter, count);
 		sa.assertAll();
 	}
 }

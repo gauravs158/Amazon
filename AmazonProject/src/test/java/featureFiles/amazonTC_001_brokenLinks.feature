@@ -2,7 +2,7 @@
 #Objective 2: Scroll down to the footer section of the landing page and count the number of broken links
 
 Feature: Count the number of links in the Amazon Landing page footer section
-@brokenlinks
+#@brokenlinks
 Scenario Outline: Count the number of links in the Amazon Landing page footer section
 
 				Given the user is on Amazon homepage
@@ -27,6 +27,6 @@ Scenario Outline: Count the number of broken links in the Amazon Landing page fo
 				Examples:		
 				| Section Name 					| Expected Count	|
 				| Get to Know Us				|		0							|
-#				| Connect with Us				|		3							|
-#				| Make Money with Us		|		0							|
-#				| Let Us Help You				|		0							|
+				| Connect with Us				|		3							|
+				| Make Money with Us		|		0							|
+				| Let Us Help You				|		0							|

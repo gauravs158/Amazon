@@ -20,6 +20,8 @@ public class AmazonItemPage {
 	SoftAssert sa = new SoftAssert();
 	WebDriverWait wait;	
 	List<String> bookList = new ArrayList<String>();
+	int intGlobalRatings;
+	double doubleCustomerReviews;
 	//TestContextSetup testContextSetup;
 
 	public AmazonItemPage(WebDriver driver) {
@@ -35,13 +37,19 @@ public class AmazonItemPage {
 	@FindBy(id = "add-to-cart-button")
 	WebElement addToCartBtn;
 
+	@FindBy(xpath = "//span[@data-hook='total-review-count']")
+	WebElement numberOfReviews;
+	
+	@FindBy(xpath = "//span[@data-hook='rating-out-of-text']")
+	WebElement starRating;
+	
 	public void addToCart() {
 		Set<String> handles = driver.getWindowHandles();
 		Iterator<String> it = handles.iterator();
 		while (it.hasNext()) {
 			String landingPage = it.next();
-			String bookPage = it.next();
-			driver.switchTo().window(bookPage);
+			String itemPage = it.next();
+			driver.switchTo().window(itemPage);
 			addToCartBtn.click();
 			driver.close();
 			driver.switchTo().window(landingPage);
@@ -50,6 +58,26 @@ public class AmazonItemPage {
 
 	public void goToCartPage() {
 		cartIcon.click();
+	}
+
+	public void conditionalReviewAndStarAddToCart() {
+		Set<String> handles = driver.getWindowHandles();
+		Iterator<String> it = handles.iterator();
+		while (it.hasNext()) {
+			String landingPage = it.next();
+			String itemPage = it.next();
+			driver.switchTo().window(itemPage);
+			String[] s = numberOfReviews.getText().split(" ");
+			String globalRatings = s[0].replaceAll(",", "");
+//			intGlobalRatings = Integer.parseInt(globalRatings);
+			String[] star = starRating.getText().split(" ");
+			String customerReviews = star[0];
+//			doubleCustomerReviews = Double.parseDouble(customerReviews);
+			if(Integer.parseInt(globalRatings)>=300 && Double.parseDouble(customerReviews)>=4) {
+				addToCartBtn.click();}
+			driver.close();
+			driver.switchTo().window(landingPage);
+		}		
 	}
 
 }

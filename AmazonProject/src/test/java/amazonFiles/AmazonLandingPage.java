@@ -52,9 +52,9 @@ public class AmazonLandingPage {
 	
 //	List<WebElement> listOfElements = driver.findElements(By.xpath("//div[normalize-space()='Get to Know Us']//following-sibling::ul//li"));
 	
-	public void searchTextBox(String bookName) {
+	public void searchTextBox(String itemName) {
 		searchTextBox.clear();
-		searchTextBox.sendKeys(bookName);
+		searchTextBox.sendKeys(itemName);
 		a.sendKeys(Keys.ENTER).perform();
 	}
 	
@@ -63,15 +63,15 @@ public class AmazonLandingPage {
 	}
 	
 	public void scrollToElement(String sectionName) throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		if(sectionName.equalsIgnoreCase("footerSection")) {
 		new Actions(driver).scrollToElement(footerSection).perform();
-		Thread.sleep(5000);}
+		Thread.sleep(1000);}
 	}
 	//div[normalize-space()='Get to Know Us']//following-sibling::ul//li/a
 	public List<WebElement> getListOfLinks(String elementName) {
 		List<WebElement> listOfElements = driver.findElements(By.xpath("//div[normalize-space()='"+elementName+"']//following-sibling::ul//li/a"));
-		System.out.println(listOfElements.size());
+		System.out.println("Number of elements in this section is: "+listOfElements.size());
 		return listOfElements;
 	}
 
