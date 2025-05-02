@@ -1,7 +1,10 @@
 package amazonFiles;
 
 import java.time.Duration;
+import java.util.List;
 
+import org.openqa.selenium.By;
+//import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,14 +45,34 @@ public class AmazonLandingPage {
 	@FindBy(partialLinkText = "Home-Kitchen")
 	WebElement homeKitchenNavBtn;
 	
-	public void searchTextBox(String bookName) {
+	@FindBy(xpath="//div[@class='navFooterLinkCol navAccessibility']/..")
+	WebElement footerSection;
+	
+	//div[normalize-space()='Get to Know Us']//following-sibling::ul//li
+	
+//	List<WebElement> listOfElements = driver.findElements(By.xpath("//div[normalize-space()='Get to Know Us']//following-sibling::ul//li"));
+	
+	public void searchTextBox(String itemName) {
 		searchTextBox.clear();
-		searchTextBox.sendKeys(bookName);
+		searchTextBox.sendKeys(itemName);
 		a.sendKeys(Keys.ENTER).perform();
 	}
 	
-	public String getURLLandingPage() {
+	public String getURLandingPage() {
 		return driver.getCurrentUrl();
+	}
+	
+	public void scrollToElement(String sectionName) throws InterruptedException {
+		Thread.sleep(1000);
+		if(sectionName.equalsIgnoreCase("footerSection")) {
+		new Actions(driver).scrollToElement(footerSection).perform();
+		Thread.sleep(1000);}
+	}
+	//div[normalize-space()='Get to Know Us']//following-sibling::ul//li/a
+	public List<WebElement> getListOfLinks(String elementName) {
+		List<WebElement> listOfElements = driver.findElements(By.xpath("//div[normalize-space()='"+elementName+"']//following-sibling::ul//li/a"));
+		System.out.println("Number of elements in this section is: "+listOfElements.size());
+		return listOfElements;
 	}
 
 }

@@ -16,7 +16,7 @@ public class AmazonCartPageSD {
 	@Then("all books are displayed in the cart")
 	public void all_books_are_displayed_in_the_cart() {
 
-		amazonCartPage.verifyAllBooksAdded(testContextSetup.bookList);
+		amazonCartPage.verifyAllBooksAdded(testContextSetup.itemList);
 	}
 
 	@Then("total displayed in cart page should be equal to the total book price")

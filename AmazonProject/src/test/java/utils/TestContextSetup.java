@@ -10,7 +10,7 @@ public class TestContextSetup {
 
 	public WebDriver driver;
 	public int cartTotal;
-	public List<String> bookList = new ArrayList<>();
+	public List<String> itemList = new ArrayList<>();
 	public TestBase testBase;
 	public PageObjectManager pageObjectManager;
 	public GenericUtils genericUtils;

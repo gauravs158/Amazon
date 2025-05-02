@@ -8,6 +8,7 @@ public class PageObjectManager {
 	public AmazonItemPage itemPage;
 	public AmazonRelatedBooksListPage relatedBooksListPage;
 	public AmazonCartPage cartPage;
+	public AmazonCustomerService amazonCustomerService;
 	public WebDriver driver;
 	
 	public PageObjectManager(WebDriver driver) {
@@ -32,5 +33,10 @@ public class PageObjectManager {
 	public AmazonRelatedBooksListPage getAmazonRelatedBooksListPage() {
 		relatedBooksListPage = new AmazonRelatedBooksListPage(driver);
 		return relatedBooksListPage;
+	}
+	
+	public AmazonCustomerService getAmazonCustomerService() {
+		amazonCustomerService = new AmazonCustomerService(driver);
+		return amazonCustomerService;
 	}
 }

@@ -24,7 +24,7 @@ Scenario Outline: Verify that the sum of prices of the books is displayed correc
 				Examples: 
 				| bookName1						| bookName2							| bookName3																		|
 				|	Bakar Puran					| Ramayana Unravelled		|	Shift Left																	|
-#				|	Shift Left					|	Bakar Puran						|	Market Wizards: Interviews with Top Traders	|
+				|	Shift Left					|	Bakar Puran						|	Market Wizards: Interviews with Top Traders	|
 #				|	Ramayana Unravelled	|	Market Wizards				|
 #				|	Market Wizards			|	Shift Left						|
 #				|	Shift Left					|	Bakar Puran						|
