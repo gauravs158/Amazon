@@ -23,4 +23,9 @@ public class AmazonCartPageSD {
 	public void total_displayed_in_cart_page_should_be_equal_to_total_bookprice() {
 		amazonCartPage.verifyCartTotal(testContextSetup.cartTotal);
 	}
+	
+	@Then("all items with GlobalRatings > 300 and StarRatings > 4 are displayed in the cart")
+	public void all_items_with_GlobalRatings_GreaterThan300_and_StarRatings_GreaterThan4_are_displayed_in_cart() {
+		
+	}
 }

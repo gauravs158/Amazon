@@ -15,9 +15,9 @@ import org.testng.asserts.SoftAssert;
 
 import utils.TestContextSetup;
 
-public class AmazonRelatedBooksListPage {
+public class AmazonRelatedItemsListPage {
 	WebDriver driver;
-	AmazonRelatedBooksListPage amazonRelatedBooksListPage;
+	AmazonRelatedItemsListPage amazonRelatedItemsListPage;
 	TestContextSetup testContextSetup;
 	List<String> bookList = new ArrayList<String>();
 	int totalCartValueExpected;
@@ -27,26 +27,37 @@ public class AmazonRelatedBooksListPage {
 	WebElement book;
 	WebElement priceTag;
 
-	public AmazonRelatedBooksListPage(WebDriver driver) {
+	public AmazonRelatedItemsListPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		this.a = new Actions(driver);
 		this.wait = new WebDriverWait(driver,Duration.ofSeconds(20));
 	}
 
-	private WebElement getBookNameElement(String bookName) {
-		bookList.add(bookName);
-		book = driver.findElement(By.xpath("//span[normalize-space()='" + bookName + "']"));
+	private WebElement getItemNameElement(String itemName) {
+		bookList.add(itemName);
+		book = driver.findElement(By.xpath("//span[normalize-space()='" + itemName + "']"));
 		return book;
 	}
 
-	public void selectBook(String bookName) {
-		WebElement book = getBookNameElement(bookName);
-		book.click();
+	private WebElement getItemNameElement(String itemName, String extraInfo) {
+		bookList.add(itemName);
+		book = driver.findElement(By.xpath("//span[contains(text(), '"+itemName+"') and contains(text(), '"+extraInfo+"')]"));
+		return book;
+	}
+
+	public void selectItem(String itemName) {
+		WebElement item = getItemNameElement(itemName);
+		item.click();
+	}
+
+	public void selectItem(String itemName, String extraInfo) {
+		WebElement item = getItemNameElement(itemName, extraInfo);
+		item.click();
 	}
 	
-	public int getPrice(String bookName) {
-		priceTag = driver.findElement(By.xpath("//span[normalize-space()='" + bookName + "']/ancestor::div[@data-cy='title-recipe']/following-sibling::div[@class='puisg-row'][1]//div[@data-cy='price-recipe']//span[@class='a-price-whole']"));
+	public int getPrice(String itemName) {
+		priceTag = driver.findElement(By.xpath("//span[normalize-space()='" + itemName + "']/ancestor::div[@data-cy='title-recipe']/following-sibling::div[@class='puisg-row'][1]//div[@data-cy='price-recipe']//span[@class='a-price-whole']"));
 		wait.until(ExpectedConditions.visibilityOfAllElements(priceTag));
 		String extractedBookPrice = priceTag.getText();
 		String priceWithoutComma = extractedBookPrice.replace(",", "");
