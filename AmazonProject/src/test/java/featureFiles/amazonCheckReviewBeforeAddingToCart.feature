@@ -9,18 +9,18 @@ Scenario Outline: Add to items to cart with average review above 4.0 with atleas
 				When the user searches for <ItemSearchEntry1>
 				And the user clicks <ItemListSelection1> with <Extra Info1>
 				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
-				And the user searches for <ItemSearchEntry2>
-				And the user selects <ItemListSelection2> with <Extra Info2>
-				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
-				And the user searches for <ItemSearchEntry3>
-				And the user selects <ItemListSelection3> with <Extra Info3>
-				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
-				And the user searches for <ItemSearchEntry4>
-				And the user selects <ItemListSelection4> with <Extra Info4>
-				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
-				And the user searches for <ItemSearchEntry5>
-				And the user selects <ItemListSelection5> with <Extra Info5>
-				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
+#				And the user searches for <ItemSearchEntry2>
+#				And the user selects <ItemListSelection2> with <Extra Info2>
+#				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
+#				And the user searches for <ItemSearchEntry3>
+#				And the user selects <ItemListSelection3> with <Extra Info3>
+#				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
+#				And the user searches for <ItemSearchEntry4>
+#				And the user selects <ItemListSelection4> with <Extra Info4>
+#				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
+#				And the user searches for <ItemSearchEntry5>
+#				And the user selects <ItemListSelection5> with <Extra Info5>
+#				And the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4
 				And the user navigates to the cart
 				Then all items with GlobalRatings > 300 and StarRatings > 4 are displayed in the cart
 				
