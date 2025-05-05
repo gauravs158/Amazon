@@ -1,5 +1,8 @@
 package stepDefinitionFiles;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import amazonFiles.AmazonItemPage;
 import io.cucumber.java.en.*;
 import utils.TestContextSetup;
@@ -7,7 +10,7 @@ import utils.TestContextSetup;
 public class AmazonItemPageSD {
 	TestContextSetup testContextSetup;
 	AmazonItemPage amazonItemPage;
-	
+	List<String> itemList = new ArrayList<String>();
 	public AmazonItemPageSD(TestContextSetup testContextSetup) {
 		this.testContextSetup = testContextSetup;
 		amazonItemPage = testContextSetup.pageObjectManager.getAmazonItemPage();
@@ -21,7 +24,8 @@ public class AmazonItemPageSD {
 	
 	@And("^the user clicks AddToCart button if globalRatings is > 300 and starRating is > 4$")
 	public void the_user_clicks_AddToCart_if_reviewCount_GreaterThan_300_and_StarRating_GreaterThan_4() {
-		amazonItemPage.conditionalReviewAndStarAddToCart();
+		itemList = amazonItemPage.conditionalReviewAndStarAddToCart();
+		System.out.println(itemList);
 	}
 	
 	@When("the user navigates to the cart")

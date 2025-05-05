@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -19,7 +20,7 @@ public class AmazonItemPage {
 	Actions a;
 	SoftAssert sa = new SoftAssert();
 	WebDriverWait wait;	
-	List<String> bookList = new ArrayList<String>();
+	List<String> itemList = new ArrayList<String>();
 	int intGlobalRatings;
 	double doubleCustomerReviews;
 	//TestContextSetup testContextSetup;
@@ -30,6 +31,9 @@ public class AmazonItemPage {
 		this.a = new Actions(driver);
 		this.wait = new WebDriverWait(driver,Duration.ofSeconds(20));
 	}
+	
+	@FindBy(id="productTitle")
+	WebElement itemName;
 
 	@FindBy(id = "nav-cart")
 	WebElement cartIcon;
@@ -60,13 +64,14 @@ public class AmazonItemPage {
 		cartIcon.click();
 	}
 
-	public void conditionalReviewAndStarAddToCart() {
+	public List<String> conditionalReviewAndStarAddToCart() {
 		Set<String> handles = driver.getWindowHandles();
 		Iterator<String> it = handles.iterator();
 		while (it.hasNext()) {
 			String landingPage = it.next();
 			String itemPage = it.next();
 			driver.switchTo().window(itemPage);
+			String item = itemName.getText();
 			String[] s = numberOfReviews.getText().split(" ");
 			String globalRatings = s[0].replaceAll(",", "");
 //			intGlobalRatings = Integer.parseInt(globalRatings);
@@ -74,10 +79,12 @@ public class AmazonItemPage {
 			String customerReviews = star[0];
 //			doubleCustomerReviews = Double.parseDouble(customerReviews);
 			if(Integer.parseInt(globalRatings)>=300 && Double.parseDouble(customerReviews)>=4) {
+				itemList.add(item);
 				addToCartBtn.click();}
 			driver.close();
 			driver.switchTo().window(landingPage);
 		}		
+		return itemList;
 	}
 
 }
