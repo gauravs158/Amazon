@@ -19,6 +19,5 @@ public class TestContextSetup {
 		testBase = new TestBase();
 		genericUtils = new GenericUtils(testBase.WebDriverManager());
 		pageObjectManager = new PageObjectManager(testBase.WebDriverManager());
-		
 	}
 }
